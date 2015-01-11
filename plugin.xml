@@ -8,8 +8,8 @@
     <engines>
         <engine name="cordova" version=">=3.0.0" />
     </engines>
-    <js-module src="www/backgroundtask.js" name="BackgroundTask">
-        <clobbers target="backgroundtask" />
+    <js-module src="www/backgroundTask.js" name="BackgroundTask">
+        <clobbers target="backgroundTask" />
     </js-module>
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
