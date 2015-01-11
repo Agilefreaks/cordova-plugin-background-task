@@ -4,6 +4,7 @@
 //
 
 #import "BackgroundTask.h"
+#import <Cordova/CDVDebug.h>
 
 @implementation BackgroundTask
 
@@ -13,6 +14,8 @@
     taskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         [[UIApplication sharedApplication] endBackgroundTask:taskId];
     }];
+    
+    DLog(@"Begin task with ID = %u", taskId);
     
     // Double should be large enough to accomodate UIBackgroundTaskIdentifier
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:taskId];
@@ -25,6 +28,9 @@
     
     if([task isKindOfClass:NSNumber.class]) {
         UIBackgroundTaskIdentifier taskId = task.unsignedIntegerValue;
+        
+        DLog(@"End task with ID = %u", taskId);
+        
         [[UIApplication sharedApplication] endBackgroundTask:taskId];
         
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
