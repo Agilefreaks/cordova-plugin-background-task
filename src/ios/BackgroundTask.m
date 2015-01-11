@@ -1,23 +1,15 @@
 //
 //  BackgroundTask.m
-//  Copyright (c) 2014 Lee Crossley - http://ilee.co.uk
+//  Copyright (c) 2015 Andrej Mihajlov
 //
 
 #import "Cordova/CDV.h"
 #import "Cordova/CDVViewController.h"
 #import "BackgroundTask.h"
 
-static UIBackgroundTaskIdentifier backgroundTaskId;
-
 @implementation BackgroundTask
 
-+ (void) initialize
-{
-    backgroundTaskId = UIBackgroundTaskInvalid;
-}
-
-- (void) start:(CDVInvokedUrlCommand*)command;
-{
+- (void)begin:(CDVInvokedUrlCommand*)command {
     backgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         [[UIApplication sharedApplication] endBackgroundTask:backgroundTaskId];
         backgroundTaskId = UIBackgroundTaskInvalid;
@@ -27,6 +19,10 @@ static UIBackgroundTaskIdentifier backgroundTaskId;
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
+}
+
+- (void)end:(CDVInvokedUrlCommand*)command {
+
 }
 
 @end

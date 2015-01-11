@@ -1,6 +1,6 @@
 //
 //  BackgroundTask.h
-//  Copyright (c) 2014 Lee Crossley - http://ilee.co.uk
+//  Copyright (c) 2015 Andrej Mihajlov
 //
 
 #import "Foundation/Foundation.h"
@@ -8,6 +8,7 @@
 
 @interface BackgroundTask : CDVPlugin
 
-- (void) start:(CDVInvokedUrlCommand*)command;
+- (void)begin:(CDVInvokedUrlCommand*)command;
+- (void)end:(CDVInvokedUrlCommand*)command;
 
 @end
