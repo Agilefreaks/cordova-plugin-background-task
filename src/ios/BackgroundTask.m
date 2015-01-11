@@ -13,6 +13,8 @@
         __block UIBackgroundTaskIdentifier taskId;
         
         taskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            ALog(@"Background task with ID = %u has expired.", taskId);
+
             [[UIApplication sharedApplication] endBackgroundTask:taskId];
         }];
         
