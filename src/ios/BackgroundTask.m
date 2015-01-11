@@ -15,7 +15,7 @@
         [[UIApplication sharedApplication] endBackgroundTask:taskId];
     }];
     
-    DLog(@"Begin task with ID = %u", taskId);
+    ALog(@"Begin background task with ID = %u", taskId);
     
     // Double should be large enough to accomodate UIBackgroundTaskIdentifier
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:taskId];
@@ -29,7 +29,7 @@
     if([task isKindOfClass:NSNumber.class]) {
         UIBackgroundTaskIdentifier taskId = task.unsignedIntegerValue;
         
-        DLog(@"End task with ID = %u", taskId);
+        ALog(@"End background task with ID = %u", taskId);
         
         [[UIApplication sharedApplication] endBackgroundTask:taskId];
         
